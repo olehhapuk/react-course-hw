@@ -1,0 +1,96 @@
+p,
+h3 {
+  margin: 0;
+}
+.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 15px;
+  border: 1px solid #dfdfdf;
+  border-radius: 12px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.card__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__top_left {
+  display: flex;
+  flex-direction: row;
+}
+
+.card__top_usernames {
+  display: flex;
+  flex-direction: column;
+  margin: 6px 0 0 8px;
+}
+
+.card__text_grey {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #636363;
+}
+.card__top_h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.card__text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  max-width: 400px;
+}
+
+.card__text_like {
+  color: #6d69eb;
+}
+.card__text_unlike {
+  font-weight: 400px;
+}
+
+.card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__bottom_section {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+}
+
+.card__bottom_action {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 6px 4px 6px;
+}
+
+.card__bottom_action:hover {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+.card__photo {
+  max-width: 100%;
+  height: auto;
+}
