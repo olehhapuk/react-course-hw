@@ -1,0 +1,139 @@
+.card {
+  background-color: #ffffff;
+  border: 1px solid #dfdfdf;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 0 5px #dfdfdf;
+}
+
+.card_header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.card_avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.card_isOffline {
+  width: 9px;
+  height: 9px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background-color: #696969;
+  z-index: 1;
+  position: absolute;
+  left: 33px;
+  top: 37px;
+}
+.card_isOnline {
+  width: 9px;
+  height: 9px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background-color: #6ad575;
+  z-index: 1;
+  position: absolute;
+  left: 33px;
+  top: 37px;
+}
+
+.card_name {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  margin: 0;
+}
+
+.card_username {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #636363;
+  margin: 0;
+}
+
+.card_createdAt {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #636363;
+  flex-grow: 1;
+  text-align: end;
+}
+
+.card_desc {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  width: 400px;
+}
+
+.card_img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.card_footer {
+  display: flex;
+  gap: 2px;
+  justify-content: space-between;
+}
+
+.footer_btns {
+  display: flex;
+  gap: 2px;
+}
+
+.card_footer_btn {
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 6px;
+  border: none;
+}
+.card_footer_btn:hover {
+  background-color: #f1f1f1;
+}
+
+.footer_btn_isLiked {
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 6px;
+  border: none;
+  color: #6ad575;
+}
+.footer_btn_isLiked:hover {
+  background-color: #f1f1f1;
+}
+
+.card_footer_btnValue {
+  margin: 0 0 0 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #323232;
+}
