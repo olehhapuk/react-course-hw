@@ -19,6 +19,8 @@
   height: 48px;
   border-radius: 50%;
   margin-right: 8px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .card_isOffline {
@@ -110,30 +112,21 @@
   background-color: transparent;
   border-radius: 6px;
   border: none;
-}
-.card_footer_btn:hover {
-  background-color: #f1f1f1;
-}
-
-.footer_btn_isLiked {
-  padding: 4px 6px;
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  border-radius: 6px;
-  border: none;
-  color: #6ad575;
-}
-.footer_btn_isLiked:hover {
-  background-color: #f1f1f1;
-}
-
-.card_footer_btnValue {
-  margin: 0 0 0 4px;
+  color: #323232;
+  gap: 4px;
+  fill: none;
+  margin: 0;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  color: #323232;
+}
+.card_footer_btn:hover {
+  background-color: #f1f1f1;
+}
+
+.isliked_btn {
+  color: #6d69eb;
+  fill: #6d69eb;
 }
