@@ -1,0 +1,90 @@
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  border: 1px solid rgba(118, 118, 118, 0.258);
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  background-color: #fff;
+  flex: 0 0 auto; 
+  width: 448px; 
+  max-width: 100%;  
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.header-info{
+  display: flex;
+  align-items: center;
+}
+
+.header-img {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  object-position: center;
+  object-fit: cover;
+}
+
+.header-status {
+  margin-left: -12px;
+}
+
+.header-userinfo {
+  margin-left: 8px;
+  gap: 2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-username {
+  color: #636363;
+  font-size: 12px;
+  line-height: 100%;
+}
+.card-image {
+  width: 100%;
+  border-radius: 8px;
+  max-height: 300px;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  justify-content: space-between;
+}
+
+.options-community {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.options-hover {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.options-hover:hover{
+  cursor: pointer;
+  background-color: #F1F1F1;
+  border-radius: 6px;
+}
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 16px;
+  align-items: flex-start;
+}
