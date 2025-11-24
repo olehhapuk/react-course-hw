@@ -1,4 +1,9 @@
-h1, h2, h3, h4, h5, h6 {
+body {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6, span {
   margin: 0;
   padding: 0;
 }
@@ -23,12 +28,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 8px;
 }
 
-.header-info{
+.headerInfo{
   display: flex;
   align-items: center;
 }
 
-.header-img {
+.headerImg {
   border-radius: 50%;
   width: 48px;
   height: 48px;
@@ -36,23 +41,23 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: cover;
 }
 
-.header-status {
+.headerStatus {
   margin-left: -12px;
 }
 
-.header-userinfo {
+.headerUserinfo {
   margin-left: 8px;
   gap: 2px;
   display: flex;
   flex-direction: column;
 }
 
-.header-username {
+.headerUsername {
   color: #636363;
   font-size: 12px;
   line-height: 100%;
 }
-.card-image {
+.cardImage {
   width: 100%;
   border-radius: 8px;
   max-height: 300px;
@@ -65,24 +70,36 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
 }
 
-.options-community {
+.optionsCommunity {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
-.options-hover {
+.optionsHover {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
 }
-.options-hover:hover{
+.optionsHover:hover{
   cursor: pointer;
   background-color: #F1F1F1;
   border-radius: 6px;
 }
 
-.post-list {
+.optionsCounter {
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.optionsCounterLiked {
+  color: #6d69eb;
+}
+
+.postList {
   display: flex;
   flex-wrap: wrap; 
   gap: 16px;

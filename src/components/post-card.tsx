@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from '../styles/index.module.css'
 
 import FooterRight from '../assets/footer_right.svg'; 
 import CommentIcon from '../assets/comment_icon.svg'; 
@@ -20,59 +21,66 @@ interface PostCardProps {
   commentsCount?: number;
 }
 
-export default function PostCard(props: PostCardProps) {
+export default function PostCard({
+  avatarUrl,
+  displayName,
+  username,
+  createdAt,
+  text,
+  imageUrl,
+  isOnline,
+  isLiked,
+  likesCount,
+  commentsCount
+}: PostCardProps) {
 
-  const [liked, setLiked] = useState(props.isLiked ?? false);
-  const [likes, setLikes] = useState(props.likesCount ?? 0);
+  const [liked, setLiked] = useState(isLiked ?? false);
+  const [likes, setLikes] = useState(likesCount ?? 0);
 
   const toggleLike = () => {
-    if (liked) {
-      setLiked(false);
-      setLikes(likes - 1);
-    } else {
-      setLiked(true);
-      setLikes(likes + 1);
-    }
+    setLiked(prev => !prev);
+    setLikes(prev => prev + (liked ? -1 : 1));
   };
 
   return (
-    <div className='card'>
-      <div className='header'>
-        <div className='header-info'>
-          <div className='header-avatar'>
-            <img className='header-img' src={props.avatarUrl} alt="Avatar" />
-            {props.isOnline 
-              ? <img className='header-status' src={Online} alt="Online" /> 
-              : <img className='header-status' src={Offline} alt="Offline" />
-            }
+    <div className={styles.card}>
+      <div className={styles.header}>
+        <div className={styles.headerInfo}>
+          <div className={styles.headerAvatar}>
+            <img className={styles.headerImg} src={avatarUrl} alt="Avatar" />
+            <img className={styles.headerStatus} src={isOnline ? Online : Offline} alt="Online status" />
           </div>
-          <div className='header-userinfo'>
-            <h4>{props.displayName}</h4>
-            <span className='header-username'>@{props.username}</span>
+          <div className={styles.headerUserinfo}>
+            <h4>{displayName}</h4>
+            <span className={styles.headerUsername}>@{username}</span>
           </div>
         </div>
-        <span>{props.createdAt}</span>
-     </div>
-     <p>{props.text}</p>
-     {props.imageUrl && (
-       <img className='card-image' src={props.imageUrl} alt="Post Image" />
-     )}
-     <div className='options'>
-        <div className='options-community'>
-          <div className="options-hover" onClick={toggleLike}>
-              <img 
-                src={liked ? HeartIconPurple : HeartIcon}
-                alt="Like button"
-              />
-              <span className='options-counter' style={{ color: liked ? '#6D69EB' : 'inherit' }}>{likes}</span>
-           </div>
-           <div className="options-hover">
+        <span>{createdAt}</span>
+      </div>
+      <p>{text}</p>
+      {imageUrl && (
+        <img className={styles.cardImage} src={imageUrl} alt="Post Image" />
+      )}
+      <div className={styles.options}>
+        <div className={styles.optionsCommunity}>
+          <button type="button" className={styles.optionsHover} onClick={toggleLike}>
+            <img
+              src={liked ? HeartIconPurple : HeartIcon}
+              alt="Like button"
+            />
+            <span
+              className={`${styles.optionsCounter} ${liked ? styles.optionsCounterLiked : ""}`}
+            >
+              {likes}
+            </span>
+          </button>
+          <button type="button" className={styles.optionsHover}>
             <img src={CommentIcon} alt="Comments" />
-            <span className='options-counter'>{props.commentsCount ?? 0}</span>
-           </div> 
+            <span className={styles.optionsCounter}>{commentsCount ?? 0}</span>
+          </button>
         </div>
-        <img className='options-hover' src={FooterRight} alt="Share" />
-     </div>
-   </div>
+        <img className={styles.optionsHover} src={FooterRight} alt="Share" />
+      </div>
+    </div>
   );
 }

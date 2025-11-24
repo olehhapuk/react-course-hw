@@ -1,4 +1,4 @@
-import '../../styles/index.css'
+import styles from '../styles/index.module.css'
 import PostCard from "./post-card.tsx";
 import PostsList from "./post-list.tsx";
 
