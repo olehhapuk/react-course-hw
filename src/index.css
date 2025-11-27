@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -116,5 +116,23 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  /* Chrome / Safari */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    display: none !important;
+  }
+
+  /* Edge */
+  input[type="number"] {
+    -webkit-appearance: none !important;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield !important;
   }
 }
