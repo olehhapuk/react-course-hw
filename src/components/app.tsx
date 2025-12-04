@@ -1,74 +1,107 @@
-import { useState } from "react";
-import Header from "./header";
-import MessageEditor from "./message-editor";
-import MessageList from "./messages-List";
-import type { Message } from "@/types/message";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import PageTitle from "./page-title";
+import CreateMovieForm from "./create-movie-form";
+import MoviesList from "./movies-list.tsx";
+import { useEffect, useState } from "react";
+import type { Movie } from "@/types/movie";
 import { nanoid } from "nanoid";
 
-const user = {
-  avatarUrl:
-    "https://i.pinimg.com/736x/46/b4/19/46b419b6b08715da417e48056fbcfe1d.jpg",
-  username: "John_doe",
-  displayName: "Caima",
-  isOnline: false,
-};
-/*
-const messages: Message[] = [
-  {
-    id: "id-1",
-    author: {
-      displayName: "Jhon Does",
-    },
-    createdAt: new Date().toISOString(),
-    text: "Hi",
-    isMine: true,
-  },
-];
-*/
-export default function App() {
-  const [messages, setMessages] = useState<Message[]>([]);
+function saveMovies(movies: Movie[]) {
+  localStorage.setItem("movies", JSON.stringify(movies));
+}
 
-  function createMessage(text: string) {
-    const newMessage: Message = {
-      text,
+function loadMovies() {
+  const persistedData = localStorage.getItem("movies");
+  if (!persistedData) {
+    return [];
+  }
+
+  return JSON.parse(persistedData) as Movie[];
+}
+
+export default function App() {
+  const [movies, setMovies] = useState<Movie[]>(loadMovies);
+
+  useEffect(() => {
+    saveMovies(movies);
+  }, [movies]);
+
+  function createMovie(title: string) {
+    const newMovie: Movie = {
       id: nanoid(),
-      author: {
-        displayName: "Jhon Does",
-      },
-      createdAt: new Date().toISOString(),
-      isMine: true,
+      isFavorite: false,
+      title,
+      sliderValue: 0,
     };
 
-    setMessages((prev) => [newMessage, ...prev]);
+    setMovies((prev) => [...prev, newMovie]);
   }
 
-  function deleteMessage(id: string) {
-    /*
-    const filteredMessages = messages.filter((message) => {
-      if (message.id === id) {
-        return false;
-      } else {
-        return true;
-      }
-    });
-
-    setMessages(filteredMessages);
-*/
-    setMessages(messages.filter((message) => message.id !== id));
+  function favoriteMovie(id: string, isFavorite: boolean) {
+    setMovies((prev) =>
+      prev.map((movie) => {
+        if (movie.id === id) {
+          return {
+            ...movie,
+            isFavorite,
+          };
+        } else {
+          return movie;
+        }
+      })
+    );
   }
+
+  function onRatingChange(id: string, rating: number) {
+    setMovies((prev) =>
+      prev.map((movie) => {
+        if (movie.id === id) {
+          return {
+            ...movie,
+            sliderValue: rating,
+          };
+        } else {
+          return movie;
+        }
+      })
+    );
+  }
+
+  function deleteMovie(id: string) {
+    setMovies((prev) => prev.filter((movie) => movie.id !== id));
+  }
+
+  const favoriteMovies = movies.filter((movie) => movie.isFavorite);
 
   return (
-    <div className="max-w-3xl mx-auto border-x h-dvh flex flex-col">
-      <div className="px-4 border-b bg-muted">
-        <Header user={user} />
-      </div>
+    <div className="max-w-2xl mx-auto p-2">
+      <PageTitle />
+      <CreateMovieForm onCreate={createMovie} />
 
-      <MessageList
-        className="grow px-2 py-2 overflow-auto "
-        messages={messages}
-        onDelete={deleteMessage}
-      />
-      <MessageEditor className="border-t px-2" onCreate={createMessage} />
+      <Tabs defaultValue="all">
+        <TabsList>
+          <TabsTrigger value="all">All Movies</TabsTrigger>
+          <TabsTrigger value="favorites">Favorite Movies</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="all">
+          <MoviesList
+            movies={movies}
+            onFavorite={favoriteMovie}
+            onDelete={deleteMovie}
+            onRatingChange={onRatingChange}
+          />
+        </TabsContent>
+
+        <TabsContent value="favorites">
+          <MoviesList
+            movies={favoriteMovies}
+            onFavorite={favoriteMovie}
+            onDelete={deleteMovie}
+            onRatingChange={onRatingChange}
+          />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
