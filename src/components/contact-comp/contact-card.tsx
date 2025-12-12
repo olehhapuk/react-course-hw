@@ -1,6 +1,6 @@
-import type { Contact } from "./types/contact";
-import { Card, CardContent } from "./ui/card";
-import { Button } from "./ui/button";
+import type { Contact } from "../types/contact";
+import { Card, CardContent } from "../ui/card";
+import { Button } from "../ui/button";
 
 interface ContactCreateProps {
   contact: Contact;

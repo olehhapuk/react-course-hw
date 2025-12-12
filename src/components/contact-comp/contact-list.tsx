@@ -1,6 +1,6 @@
-import type { Contact } from "./types/contact";
+import type { Contact } from "../types/contact";
 import ContactCard from "./contact-card";
-import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from "./ui/empty";
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia } from "../ui/empty";
 import { UserRound } from "lucide-react";
 
 interface ContactListProps {
