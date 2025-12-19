@@ -1,11 +1,12 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter } from "react-router";
 
-import HomeView from '../views/home.view';
-import RootLayout from '@/layouts/root.layout';
-import NotFoundView from '@/views/not-found.view';
-import { RoutePaths } from '@/constants/routes';
-import PostsView from '@/views/posts.view';
-import PostDetailsView from '@/views/post-details.view';
+import HomeView from "../views/home.view";
+import RootLayout from "@/layouts/root.layout";
+import NotFoundView from "@/views/not-found.view";
+import { RoutePaths } from "@/constants/routes";
+import PostsView from "@/views/posts.view";
+import PostDetailsView from "@/views/post-details.view";
+import CreatePostView from "@/views/create-post.view";
 
 export const router = createBrowserRouter([
   {
@@ -23,10 +24,14 @@ export const router = createBrowserRouter([
         path: RoutePaths.POST_DETAILS,
         element: <PostDetailsView />,
       },
+      {
+        path: RoutePaths.POST_CREATE,
+        element: <CreatePostView />,
+      },
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <NotFoundView />,
   },
 ]);

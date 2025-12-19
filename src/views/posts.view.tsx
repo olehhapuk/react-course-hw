@@ -1,20 +1,29 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Spinner } from '@/components/ui/spinner';
-import { getPostDetailsPath } from '@/constants/routes';
-import { getPostsService } from '@/services/get-posts.service';
-import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Spinner } from "@/components/ui/spinner";
+import { getPostCreatePath, getPostDetailsPath } from "@/constants/routes";
+import { getPostsService } from "@/services/get-posts.service";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
+import { DiamondPlus } from "lucide-react";
 
 export default function PostsView() {
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ['posts'],
+    queryKey: ["posts"],
     queryFn: getPostsService,
   });
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-2">Posts</h1>
+      <div className="flex justify-between mb-3 items-center">
+        <h1 className=" text-xl font-bold ">Posts</h1>
+        <Button asChild className="text-xl" variant="outline">
+          <Link to={getPostCreatePath()}>
+            Create Post <DiamondPlus />
+          </Link>
+        </Button>
+      </div>
 
       {isFetching && !isLoading && <Spinner className="fixed top-4 right-4" />}
 
