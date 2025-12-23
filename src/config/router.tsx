@@ -7,6 +7,7 @@ import { RoutePaths } from "@/constants/routes";
 import PostsView from "@/views/posts.view";
 import PostDetailsView from "@/views/post-details.view";
 import CreatePostView from "@/views/create-post.view";
+import EditPostView from "@/views/edit-post.view";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.CREATE_POST,
         element: <CreatePostView />,
+      },
+      {
+        path: RoutePaths.EDIT_POST,
+        element: <EditPostView />,
       },
     ],
   },

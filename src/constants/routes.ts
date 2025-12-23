@@ -5,6 +5,7 @@ export enum RoutePaths {
   POSTS = "/posts",
   POST_DETAILS = "/posts/:postId",
   CREATE_POST = "/create-post",
+  EDIT_POST = "/posts/:postId/edit",
 }
 
 export const getHomePath = () => RoutePaths.HOME;
@@ -14,3 +15,7 @@ export const getPostDetailsPath = (postId: string) =>
     postId,
   });
 export const getCreatePostPath = () => RoutePaths.CREATE_POST;
+export const getEditPostPath = (postId: string) =>
+  generatePath(RoutePaths.EDIT_POST, {
+    postId,
+  });

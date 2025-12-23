@@ -1,9 +1,12 @@
-import DeletePostBtn from '@/components/delete-post-btn';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Skeleton } from '@/components/ui/skeleton';
-import { getPostDetailsService } from '@/services/get-post-details.service';
-import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router';
+import DeletePostBtn from "@/components/delete-post-btn";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getEditPostPath, getPostsPath } from "@/constants/routes";
+import { getPostDetailsService } from "@/services/get-post-details.service";
+import { useQuery } from "@tanstack/react-query";
+import { ChevronLeft, Pencil } from "lucide-react";
+import { Link, useParams } from "react-router";
 
 export default function PostDetailsView() {
   const { postId } = useParams() as { postId: string };
@@ -13,7 +16,7 @@ export default function PostDetailsView() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['posts', postId],
+    queryKey: ["posts", postId],
     queryFn: () => getPostDetailsService(postId),
   });
 
@@ -35,8 +38,20 @@ export default function PostDetailsView() {
       {post && (
         <>
           <div className="mb-6 flex justify-between items-center">
-            <h1 className="text-2xl font-bold">{post.title}</h1>
-            <DeletePostBtn postId={postId} />
+            <Button asChild variant="ghost">
+              <Link to={getPostsPath()}>
+                <ChevronLeft />
+              </Link>
+            </Button>
+            <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
+            <div className="flex items-center gap-2">
+              <Button asChild variant="outline" size="icon-sm">
+                <Link to={getEditPostPath(postId)}>
+                  <Pencil />
+                </Link>
+              </Button>
+              <DeletePostBtn postId={postId} />
+            </div>
           </div>
           <p>{post.text}</p>
         </>

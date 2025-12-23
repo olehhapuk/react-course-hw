@@ -1,68 +1,23 @@
-import z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
+import CreatePostForm from "@/components/create-post.form";
 import { Button } from "@/components/ui/button";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { createPostService } from "@/services/create-post.service";
-import { useNavigate } from "react-router";
 import { getPostsPath } from "@/constants/routes";
-
-const validationSchema = z.object({
-  title: z
-    .string()
-    .min(3, "Write at least 3 characters")
-    .max(30, "Limit is 30 characters"),
-  text: z
-    .string()
-    .min(3, "Write at least 3 characters")
-    .max(60, "Limit is 60 characters"),
-});
-
-type CreatePostViewData = z.infer<typeof validationSchema>;
+import { ChevronLeft } from "lucide-react";
+import { Link } from "react-router";
 
 export default function CreatePostView() {
-  const navigate = useNavigate();
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<CreatePostViewData>({
-    resolver: zodResolver(validationSchema),
-    defaultValues: {
-      title: "",
-      text: "",
-    },
-  });
-
-  async function onSubmit(data: CreatePostViewData) {
-    await createPostService(data);
-    reset();
-    navigate(getPostsPath());
-  }
-
   return (
-    <form
-      className="flex flex-col gap-4 mb-8"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <Field>
-        <FieldLabel>Title</FieldLabel>
-        <Input aria-invalid={!!errors.title} {...register("title")} />
-        <FieldError className="min-h-5">{errors.title?.message}</FieldError>
-      </Field>
-
-      <Field>
-        <FieldLabel>Text</FieldLabel>
-        <Input aria-invalid={!!errors.text} {...register("text")} />
-        <FieldError className="min-h-5">{errors.text?.message}</FieldError>
-      </Field>
-
-      <Button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Creating..." : "Add"}
-      </Button>
-    </form>
+    <div>
+      <nav className="mb-6 flex items-center gap-4">
+        <Button asChild variant="ghost">
+          <Link to={getPostsPath()}>
+            <ChevronLeft />
+          </Link>
+        </Button>
+        <h1 className="text-2xl font-bold">Create post</h1>
+      </nav>
+      <div>
+        <CreatePostForm />
+      </div>
+    </div>
   );
 }
