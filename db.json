@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "title": "Katya UPDATE",
+      "text": "Fikmk NIpnip notont",
+      "id": "bc5b"
+    },
+    {
+      "id": "89a8",
+      "title": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+      "text": "l;;;;;;;;;;;;"
+    },
+    {
+      "id": "8d9a",
+      "title": "Hello",
+      "text": "Testing som stuff"
+    },
+    {
+      "id": "c788",
+      "title": "Katya",
+      "text": "And not"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe"
+    }
+  ]
+}
