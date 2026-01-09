@@ -1,20 +1,26 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Spinner } from '@/components/ui/spinner';
-import { getPostDetailsPath } from '@/constants/routes';
-import { getPostsService } from '@/services/get-posts.service';
-import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Spinner } from "@/components/ui/spinner";
+import { getCreatePost, getPostDetailsPath } from "@/constants/routes";
+import { getPostsService } from "@/services/get-posts.service";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
 
 export default function PostsView() {
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ['posts'],
+    queryKey: ["posts"],
     queryFn: getPostsService,
   });
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-2">Posts</h1>
+      <div className="flex">
+        <h1 className="text-2xl font-bold mb-2 mr-2">Posts</h1>
+        <Button asChild>
+          <Link to={getCreatePost()}>+</Link>
+        </Button>
+      </div>
 
       {isFetching && !isLoading && <Spinner className="fixed top-4 right-4" />}
 
