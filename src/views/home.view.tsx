@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { getPostsPath } from '@/constants/routes';
-import { Link } from 'react-router';
+import { Button } from "@/components/ui/button";
+import { getPostsPath } from "@/constants/routes";
+import { Link } from "react-router";
 
 export default function HomeView() {
   return (

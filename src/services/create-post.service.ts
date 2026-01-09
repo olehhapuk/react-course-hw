@@ -1,5 +1,5 @@
-import { apiClient } from '@/lib/api-client';
-import type { Post } from '@/types/post';
+import { apiClient } from "@/lib/api-client";
+import type { Post } from "@/types/post";
 
 interface CreatePostDto {
   title: string;
@@ -7,6 +7,6 @@ interface CreatePostDto {
 }
 
 export async function createPostService(data: CreatePostDto) {
-  const res = await apiClient.post<Post>('/posts', data);
+  const res = await apiClient.post<Post>("/posts", data);
   return res.data;
 }

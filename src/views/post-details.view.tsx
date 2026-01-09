@@ -1,9 +1,9 @@
-import DeletePostBtn from '@/components/delete-post-btn';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Skeleton } from '@/components/ui/skeleton';
-import { getPostDetailsService } from '@/services/get-post-details.service';
-import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router';
+import DeletePostBtn from "@/components/delete-post-btn";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getPostDetailsService } from "@/services/get-post-details.service";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router";
 
 export default function PostDetailsView() {
   const { postId } = useParams() as { postId: string };
@@ -13,7 +13,7 @@ export default function PostDetailsView() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['posts', postId],
+    queryKey: ["posts", postId],
     queryFn: () => getPostDetailsService(postId),
   });
 
